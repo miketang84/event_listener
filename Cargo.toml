@@ -1,0 +1,31 @@
+[package]
+name = "event_listener"
+version = "0.1.0"
+authors = ["daogangtang <daogangtang@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+substrate-subxt = {path="../substrate-subxt"}
+tokio = "0.1"
+futures = "0.1.28"
+jsonrpc-core-client = { version = "12.1.0", features = ["ws"] }
+num-traits = { version = "0.2", default-features = false }
+parity-scale-codec = { version = "1.0", default-features = false, features = ["derive", "full"] }
+runtime_metadata = { git = "https://github.com/paritytech/substrate/", package = "srml-metadata" }
+runtime_support = { git = "https://github.com/paritytech/substrate/", package = "srml-support" }
+runtime_primitives = { git = "https://github.com/paritytech/substrate/", package = "sr-primitives" }
+srml-system = { git = "https://github.com/paritytech/substrate/", package = "srml-system" }
+substrate-rpc = { git = "https://github.com/paritytech/substrate/", package = "substrate-rpc" }
+substrate-primitives = { git = "https://github.com/paritytech/substrate/", package = "substrate-primitives" }
+transaction_pool = { git = "https://github.com/paritytech/substrate/", package = "substrate-transaction-pool" }
+node-runtime = { git = "https://github.com/paritytech/substrate/", package = "node-runtime" }
+srml-balances = { git = "https://github.com/paritytech/substrate/", package = "srml-balances" }
+substrate-keyring = { git = "https://github.com/paritytech/substrate/", package = "substrate-keyring" }
+log = "0.4"
+env_logger = "0.6"
+
+[[bin]]
+name = "t"
+path = "src/t.rs"
