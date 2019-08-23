@@ -81,26 +81,16 @@ fn test_setup() -> (tokio::runtime::Runtime, Client<Runtime>) {
 }
 
 fn main() {
-/*
+
     let (mut rt, client) = test_setup();
 
     let stream = rt.block_on(client.subscribe_blocks()).unwrap();
-    let task = stream.for_each(| ttt | {
-            println!("xxx {:?}", ttt);
-            Ok(())
-        })
-        .map_err(|e| ());
-    
-    tokio::run(task);
-    */
-/*
     let (_header, _) = rt
         .block_on(stream.into_future().map_err(|(e, _)| e))
         .unwrap();
 
     println!("1. {:?}", _header);
-*/
-    /*
+
     let (mut rt, client) = test_setup();
     let stream = rt.block_on(client.subscribe_finalized_blocks()).unwrap();
     let (_header, _) = rt
@@ -108,15 +98,13 @@ fn main() {
         .unwrap();
 
     println!("2. {:?}", _header);
-*/
 
     let (mut rt, client) = test_setup();
     let stream = rt.block_on(client.subscribe_events()).unwrap();
-    let task = stream.for_each(| ttt | {
-            println!("{:?}", ttt);
-            Ok(())
-        })
-        .map_err(|e| ());
+    let (_header, _) = rt
+        .block_on(stream.into_future().map_err(|(e, _)| e))
+        .unwrap();
 
-    tokio::run(task);
+    println!("3. {:?}", _header);
+
 }
