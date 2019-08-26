@@ -1,6 +1,6 @@
 use substrate_subxt::{
     ClientBuilder,
-    DefaultSystem,
+    system::BasicSystem,
 };
 use runtime_primitives::generic::Era;
 use futures::future::Future;
@@ -8,13 +8,12 @@ use futures::stream::Stream;
 
 struct Runtime;
 
-impl DefaultSystem<Runtime> for Runtime {}
+impl BasicSystem for Runtime {}
 
 
 fn main() {
     env_logger::try_init().ok();
 
-    Runtime::init();
 
     let mut rt = tokio::runtime::Runtime::new().unwrap();
     let client_future = ClientBuilder::<Runtime>::new().build();

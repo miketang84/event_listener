@@ -11,9 +11,34 @@ log = "0.4"
 env_logger = "0.6"
 tokio = "0.1"
 futures = "0.1.28"
-srml-system = { git = "https://github.com/paritytech/substrate/", package = "srml-system" }
-node-runtime = { git = "https://github.com/paritytech/substrate/", package = "node-runtime" }
-srml-balances = { git = "https://github.com/paritytech/substrate/", package = "srml-balances" }
-runtime_primitives = { git = "https://github.com/paritytech/substrate/", package = "sr-primitives" }
+
+#srml-system = { git = "https://github.com/paritytech/substrate/", package = "srml-system" }
+#node-runtime = { git = "https://github.com/paritytech/substrate/", package = "node-runtime" }
+#srml-balances = { git = "https://github.com/paritytech/substrate/", package = "srml-balances" }
+#runtime_primitives = { git = "https://github.com/paritytech/substrate/", package = "sr-primitives" }
+
 substrate-subxt = {path="../substrate-subxt"}
+node-runtime = { path = "../substrate/node/runtime/", package = "node-runtime" }
+srml-system = { path = "../substrate/srml/system", package = "srml-system" }
+srml-balances = { path = "../substrate/srml/balances", package = "srml-balances" }
+runtime_primitives = { path = "../substrate/core/sr-primitives", package = "sr-primitives" }
+substrate-keyring = { path = "../substrate/core/keyring", package = "substrate-keyring" }
+substrate-primitives = { path = "../substrate/core/primitives", package = "substrate-primitives" }
+
+
+[[bin]]
+name = "subscribe_events"
+path = "src/subscribe_events.rs"
+
+[[bin]]
+name = "subscribe_blocks"
+path = "src/subscribe_blocks.rs"
+
+[[bin]]
+name = "subscribe_finalized_blocks"
+path = "src/subscribe_finalized_blocks.rs"
+
+[[bin]]
+name = "send_xt"
+path = "src/send_xt.rs"
 
